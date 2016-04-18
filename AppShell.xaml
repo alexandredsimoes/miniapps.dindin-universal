@@ -1,0 +1,92 @@
+﻿<Page x:Name="Root"
+      x:Class="DinDinPro.Universal.AppShell"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:DinDinPro.Universal"
+      xmlns:controls="using:DinDinPro.Universal.UserControls"
+      xmlns:viewmodel="using:DinDinPro.Universal.ViewModels"
+      xmlns:models="using:DinDinPro.Universal.Models"
+      xmlns:converters="using:DinDinPro.Universal.Converters"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:core="using:Microsoft.Xaml.Interactions.Core"       
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"      
+      mc:Ignorable="d"
+     >
+
+
+    <Page.Resources>
+        <converters:BoolToVisibilityConverter x:Name="BoolToVisibilityConverter" />
+        <converters:InvertedBoolToVisibilityConverter x:Name="InvertedBoolToVisibilityConverter" />
+        <converters:InvertBoolean x:Name="InvertBoolean" />
+        <converters:ObjectToMenuItemConverter x:Name="ObjectToMenuItemConverter" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Background="{ThemeResource SystemChromeMediumColor}">
+            <Button Content="&#xE700;" Command="{x:Bind ViewModel.ToggleSplitViewPaneCommand}" Style="{StaticResource IconButtonStyle}"/>
+            <TextBlock Text="DINDIN UNIVERSAL" Style="{StaticResource AppTitleTextBlockStyle}" Visibility="{Binding ElementName=This, Path=IsSearchOpen, Mode=TwoWay, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+        </StackPanel>
+
+        <SplitView x:Name="SplitView" Grid.Row="1" IsPaneOpen="{x:Bind ViewModel.IsSplitViewPaneOpen, Mode=TwoWay}" >
+            <SplitView.Pane>
+                <ListView ItemsSource="{x:Bind ViewModel.MenuItems}"
+                          SelectedItem="{x:Bind ViewModel.SelectedMenuItem, Mode=TwoWay, Converter={StaticResource ObjectToMenuItemConverter}}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Padding" Value="0" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:MenuItem">
+                            <StackPanel Orientation="Horizontal" Height="48">
+                                <TextBlock Grid.RowSpan="2" Text="{x:Bind Icon, Mode=OneWay}" Style="{StaticResource IconTextBlockStyle}" />
+                                <TextBlock Grid.Column="1" Text="{x:Bind Title, Mode=OneWay}" Style="{StaticResource MenuTitleTextBlockStyle}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <RelativePanel>
+
+                    <!--<TextBlock Text="{Binding ElementName=Frame, Path=Content.DataContext.Message}" Style="{StaticResource BaseTextBlockStyle}" />-->
+                    <ProgressBar IsIndeterminate="True"  x:Name="MessageStack" Grid.Row="0" Visibility="{Binding ElementName=Frame, Path=Content.DataContext.IsBusy, Converter={StaticResource BoolToVisibilityConverter}}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" />
+
+                    <!--<Universal:AdMediatorControl  Id="BannerShellAD" x:Name="BannerAD" Margin="5" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="MessageStack" RelativePanel.AlignLeftWithPanel="True" />-->
+                    <!--Antes o relativepanel.below estava apontando para o MessageStack-->
+                    <Frame x:Name="Frame" SourcePageType="{x:Bind ViewModel.SelectedPageType, Mode=TwoWay}" Grid.Row="2" RelativePanel.Below="MessageStack" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+                    </Frame>
+                </RelativePanel>
+
+            </SplitView.Content>
+        </SplitView>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowStates">
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SplitView.DisplayMode" Value="CompactInline" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SplitView.DisplayMode" Value="Overlay" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>

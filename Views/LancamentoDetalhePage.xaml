@@ -1,0 +1,114 @@
+﻿<Page 
+    x:Class="DinDinPro.Universal.Views.LancamentoDetalhePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DinDinPro.Universal.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:uc="using:DinDinPro.Universal.UserControls"    
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:converters="using:DinDinPro.Universal.Converters"     
+    xmlns:designViewModels="using:DinDinPro.Universal.DesignViewModels"
+    d:DataContext="{d:DesignInstance designViewModels:LancamentoDetalhePageDesignViewModel ,IsDesignTimeCreatable=True}"
+    DataContext="{Binding Source={StaticResource Locator}, Path=LancamentoDetalhe}">
+    <Page.Resources>
+        <!--Converters-->
+        <converters:StringFormatConverter x:Key="StringFormatConverter" />
+        <converters:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <converters:BooleanToSwitchText x:Key="BooleanToSwitchText" />
+        <converters:DataParaExtensoConverter x:Key="DataParaExtensoConverter" />
+        <converters:TipoRepeticaoConverter x:Key="TipoRepeticaoConverter" />
+        <converters:StringToVisibility x:Key="EmptyStringToVisibilityConverter"/>
+        <converters:TipoCorConverter x:Key="TipoCorConverter" />
+        <converters:FinalRepeticaoConverterToString x:Key="FinalRepeticaoConverterToString" />
+
+
+    </Page.Resources>
+
+    <interactivity:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{Binding PageLoad}" />
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Edit" x:Uid="LancamentoDetalhePageEditarButton" Label="alterar" Command="{Binding AlterarLancamento}"/>
+            <AppBarButton Icon="Delete" x:Uid="LancamentoDetalhePageRemoverButton" Label="remover" Command="{Binding RemoverLancamento}"/>
+            <AppBarButton Icon="RepeatOne" x:Uid="LancamentoDetalhePageDuplicarButton" Label="duplicar" Command="{Binding DuplicarLancamento}"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Margin="10,10,10,75">
+
+                <!--Valor Previsto-->
+                <TextBlock  Text="Valor previsto" x:Uid="DetalhesContaPageLabelValor" Style="{StaticResource BodyTextBlockStyle}" />
+
+
+                <TextBlock Text="{Binding Detalhes.ValorLancamento, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:c2\}}"  Foreground="{Binding Detalhes.Tipo, Converter={StaticResource TipoCorConverter}}" HorizontalAlignment="Left" Margin="10,0,0,0" Padding="0" Style="{StaticResource SubheaderTextBlockStyle}" />
+                <Border Style="{StaticResource Borda}"   Margin="10" />
+
+
+                <StackPanel Visibility="{Binding Detalhes.Fechado, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <!--Valor Realizado-->
+                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="10,10,0,0" Text="Valor realizado" x:Uid="DetalhesContaPageLabelValorRealizado" />
+                    <TextBlock Text="{Binding Detalhes.ValorLancamentoRealizado, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:c2\}}" Style="{StaticResource SubheaderTextBlockStyle}" Foreground="{Binding Detalhes.Tipo, Converter={StaticResource TipoCorConverter}}" HorizontalAlignment="Left" Margin="10,0,0,0" Height="75" />
+                    <Border Style="{StaticResource Borda}"  Margin="10" />
+                </StackPanel>
+
+                <!--Realizado-->
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="10,10,0,5" x:Uid="DetalhesContaPageLabelStatus" Text="Status" />
+                <TextBlock Text="{Binding Detalhes.Fechado, ConverterParameter=1, Converter={StaticResource BooleanToSwitchText}}" Style="{StaticResource BodyTextBlockStyle}" FontWeight="Bold" TextWrapping="Wrap" Margin="10,0,0,20" />
+                <Border Style="{StaticResource Borda}"  Margin="10" />
+
+                <!--Tags-->
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="10,10,0,5" x:Uid="DetalhesContaPageLabelTags" Text="Tags" />
+                <TextBlock Text="{Binding Detalhes.Tags}" Style="{StaticResource BodyTextBlockStyle}" FontWeight="Bold" TextWrapping="Wrap" Margin="10,0,0,20" />
+                <Border Style="{StaticResource Borda}"  Margin="10" />
+
+                <!--Data-->
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="10,10,0,5"  x:Uid="DetalhesContaPageLabelData" Text="Date"/>
+                <TextBlock Text="{Binding Detalhes.DataLancamento, Converter={StaticResource DataParaExtensoConverter}}" Style="{StaticResource BodyTextBlockStyle}" FontWeight="Bold" Margin="10,0,0,20" />
+                <Border Style="{StaticResource Borda}"  Margin="10" />
+
+
+                <!-- Tipo de repetição -->
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}" x:Uid="DetalhesContaPageLabelRepeticao" Margin="10,10,0,5"/>
+                <TextBlock FontWeight="Bold" Text="{Binding Detalhes.TipoRepeticao, Converter={StaticResource TipoRepeticaoConverter}}" Style="{StaticResource BodyTextBlockStyle}" Margin="10,10,0,5" />
+                <Border Style="{StaticResource Borda}"  Margin="10" />
+
+
+                <!-- Final de repetição -->
+                <TextBlock Margin="10,10,0,5" Text="End of repetition" x:Uid="DetalhesContaPageLabelFinalRepeticao" Style="{StaticResource BodyTextBlockStyle}" />
+                <TextBlock Text="{Binding Detalhes.TipoFimRepeticao, Converter={StaticResource FinalRepeticaoConverterToString}}" Style="{StaticResource BodyTextBlockStyle}" FontWeight="Bold" Margin="10,0,0,20" />
+                <Border Style="{StaticResource Borda}"  Margin="10" />
+
+                <!--Forma de pagamento-->
+                <Border Visibility="{Binding Detalhes.FormaPagamento, Converter={StaticResource EmptyStringToVisibilityConverter}}">
+                    <StackPanel>
+                        <TextBlock  Style="{StaticResource TextStyle}" Margin="10,0,0,5" x:Uid="DetalhesContaPageLabelMetodoPagamento" />
+                        <TextBlock Text="{Binding Detalhes.FormaPagamento}" Style="{StaticResource BodyTextBlockStyle}" FontWeight="Bold" TextWrapping="Wrap" Margin="10,0,0,20" />
+                        <Border Style="{StaticResource Borda}"  Margin="10" />
+                    </StackPanel>
+                </Border>
+
+                <!--Descrição-->
+                <Border Visibility="{Binding Detalhes.Descricao, Converter={StaticResource EmptyStringToVisibilityConverter}}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource TextStyle}" x:Uid="DetalhesContaPageLabelDescricao"  />
+                        <TextBlock Text="{Binding Detalhes.Descricao}" Style="{StaticResource BodyTextBlockStyle}" Margin="10,0,0,20" FontWeight="Bold" />
+                        <Border Style="{StaticResource Borda}"  Margin="10" />
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

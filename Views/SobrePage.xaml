@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="DinDinPro.Universal.Views.SobrePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DinDinPro.Universal.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Margin="15,15,15,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Sobre" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}" />
+
+            <StackPanel Grid.Row="1">
+
+                <TextBlock Text="Sobre" x:Name="VersaoTextBlock" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,0,10" />
+
+                <Button Content="Gostou do aplicativo? Avalie ;)" x:Uid="RateAppButton" x:Name="RateAppButton" HorizontalContentAlignment="Center" Margin="0,10,0,15"/>
+                <Button Content="Fale com o desenvolvedor" x:Uid="SobreFaleDevButton" x:Name="SobreFaleDevButton" HorizontalContentAlignment="Center"/>
+                
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

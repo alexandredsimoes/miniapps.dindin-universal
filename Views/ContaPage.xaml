@@ -1,0 +1,63 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DinDinPro.Universal.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:DinDinPro.Universal.Converters"
+    xmlns:uc="using:DinDinPro.Universal.UserControls"  
+    
+    x:Class="DinDinPro.Universal.Views.ContaPage"
+    mc:Ignorable="d"  
+    NavigationCacheMode="Disabled"
+    >
+
+    <Page.Resources>
+        <!--Converters-->
+        <converters:StringFormatConverter x:Key="StringFormatConverter" />
+    </Page.Resources>
+    <Page.DataContext>
+        <Binding Path="Conta" Source="{StaticResource Locator}"/>
+    </Page.DataContext>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Save" x:Uid="ButtonSalvarConta" Command="{Binding SalvarConta}"/>
+
+        </CommandBar>
+    </Page.BottomAppBar>
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <StackPanel Grid.Row="1" Margin="15,15,15,75">
+
+            <TextBox x:Uid="ContaPageNomeTextBox"  InputScope="AlphanumericHalfWidth"                                 
+				Text="{Binding Detalhes.NomeConta, Mode=TwoWay}" Padding="5" PlaceholderText="Nome da conta"/>
+
+
+            
+            <!-- Valor realizado -->
+            <Button BorderThickness="0,0,0,0.5" HorizontalAlignment="Stretch" 
+				VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+				Command="{Binding AlterarValor}"                                
+				VerticalContentAlignment="Stretch" Padding="-2,0,0,0" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" Style="{StaticResource ButtonFakeStyle}" >
+                <Button.Flyout>
+                    <Flyout Placement="Full">
+                        <uc:DecimalInputUserControl DataContext="{Binding DecimalInputViewModel}"  />
+                    </Flyout>
+
+                </Button.Flyout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="ContaPageInicialBalance" Text="Valor realizado" Margin="0" VerticalAlignment="Top" Style="{StaticResource SubtitleTextBlockStyle}"  />
+                    <TextBlock Grid.Column="1" x:Name="txtLancamentoValorRealizado" Text="{Binding Detalhes.ValorInicial, ConverterParameter=\{0:n2\}, Converter={StaticResource StringFormatConverter}, Mode=OneWay}"  Padding="0" VerticalAlignment="Center" Style="{StaticResource SubheaderTextBlockStyle}"  />
+                </Grid>
+            </Button>
+            <ToggleSwitch x:Uid="ContaPageSaldoNegativoToggle" Header="Saldo negativo" IsOn="{Binding SaldoNegativo, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        </StackPanel>
+    </Grid>
+</Page>

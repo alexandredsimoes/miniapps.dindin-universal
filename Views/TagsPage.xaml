@@ -1,0 +1,70 @@
+﻿<Page x:Name="This"     
+    x:Class="DinDinPro.Universal.Views.TagsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DinDinPro.Universal.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"       
+    xmlns:uc="using:DinDinPro.Universal.UserControls"    
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"    
+    xmlns:data="using:DinDinPro.Universal.Models"
+    xmlns:converters="using:DinDinPro.Universal.Converters"    
+    xmlns:myBehaviors="using:DinDinPro.Universal.Behaviors"
+    mc:Ignorable="d"    
+    xmlns:dvm="using:DinDinPro.Universal.DesignViewModels"
+    DataContext="{Binding Source={StaticResource Locator}, Path=Tags}">
+
+    <Page.Resources>
+        <converters:BoolToVisibilityConverter x:Name="BoolToVisibilityConverter" />
+        <converters:TipoBooleanConverter x:Name="TipoBooleanConverter" />
+    </Page.Resources>
+
+    <interactivity:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{Binding PageLoad}" />
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Add" x:Name="TagFlyout" Label="nova tag" x:Uid="TagsPageAppBarButtonCriarTag"  Command="{Binding CriarTag}" />
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Margin="15" Text="GERENCIAR TAGS" x:Uid="TagsPageTituloPagina" Style="{StaticResource TitleTextBlockStyle}" Grid.Row="0" />
+
+        <ListView ItemsSource="{Binding Lista}" Margin="15,15,15,75" Grid.Row="1" x:Name="ListaListView">
+            <interactivity:Interaction.Behaviors>
+                <!--Selecao -->
+                <core:EventTriggerBehavior SourceObject="{Binding ElementName=ListaListView}" EventName="Tapped">
+                    <core:InvokeCommandAction Command="{Binding DataContext.SelecionarTag, ElementName=This}"  CommandParameter="{Binding SelectedItem, ElementName=ListaListView}" />
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid Orientation="Horizontal" ItemWidth="250" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="{Binding NomeTag}"  Style="{StaticResource BodyTextBlockStyle}" />
+                        <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0">
+                                    <Run>(</Run>
+                                    <Run Text="{Binding Tipo}" />
+                                    <Run>)</Run>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <uc:BusyIndicatorControl Grid.Row="1" Visibility="{Binding IsBusy,Converter={StaticResource BoolToVisibilityConverter}}" d:IsHidden="True" />
+    </Grid>
+</Page>

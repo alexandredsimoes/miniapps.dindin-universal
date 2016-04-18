@@ -1,0 +1,253 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DinDinPro.Universal.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="using:DinDinPro.Universal.UserControls"    
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"    
+    xmlns:data="using:DinDinPro.Universal.Models"
+    xmlns:converters="using:DinDinPro.Universal.Converters"
+    xmlns:myBehaviors="using:DinDinPro.Universal.Behaviors"
+    xmlns:designViewModels="using:DinDinPro.Universal.DesignViewModels"     
+    xmlns:Media="using:Microsoft.Xaml.Interactions.Media"     
+    x:Class="DinDinPro.Universal.Views.ContaDetalhePage"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=ContaDetalhe}"
+    d:DataContext="{d:DesignInstance designViewModels:ContaDetalhesPageDesignViewModel, IsDesignTimeCreatable=True}" 
+    x:Name="This"
+    ManipulationMode="None">
+
+    <Page.Resources>
+
+        <!--<Style x:Key="cellStyleValor" TargetType="Grid:GridCell">
+            <Setter Property="Foreground" Value="{Binding Tipo, Converter={StaticResource TipoCorConverter}}" />
+        </Style>-->
+
+        <converters:SaldoCorConverter x:Key="SaldoCorConverter"/>
+
+        <!---Converters-->
+        <converters:StringFormatConverter x:Key="StringFormatConverter" />
+        <converters:TipoCorConverter x:Key="TipoCorConverter" />
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:InverterBoolToVisibility x:Key="InverterBoolToVisibility" />
+
+
+
+        <DataTemplate x:Key="PivoItem1">
+            <Grid>
+                <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Foreground="#FF740F0F" Text="{Binding}" Margin="0,0,25,0" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="PivoItem2">
+            <Grid>
+                <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Foreground="#CC2E2D2D" Text="{Binding}" Margin="0,0,25,0" />
+            </Grid>
+        </DataTemplate>
+        <Storyboard x:Name="AnimarMudancaPeriodo">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PeriodoStackPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.55" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.98" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="viewbox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-100"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.122" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.642" Value="100"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="viewbox">
+                <EasingDoubleKeyFrame KeyTime="0:0:1.642" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+    </Page.Resources>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="remover conta" Icon="Delete" Command="{Binding RemoverConta}" />
+            </CommandBar.SecondaryCommands>
+
+            <AppBarButton x:Uid="ButtonCriarLancamento" Command="{Binding CriarLancamento}" Label="criar" Icon="Add"/>
+            <AppBarButton x:Uid="ContaDetalhePageOrdernarButton" Label="criar" Icon="Sort">
+                <AppBarButton.Flyout>
+                    <ListPickerFlyout x:Uid="ContaDetalheOrderFlyout" x:Name="ContaDetalheOrderFlyout2" ItemsSource="{Binding TiposOrdenacao}" DisplayMemberPath="Descricao" SelectedValue="{Binding TipoOrdenacao, Mode=TwoWay}" Placement="Full">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="ItemsPicked">
+                                <core:InvokeCommandAction Command="{Binding Ordernar}" CommandParameter="{Binding TipoOrdenacao.Indice}"/>
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                    </ListPickerFlyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+
+    <interactivity:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <!--<Media:ControlStoryboardAction Storyboard="{StaticResource AnimarMudancaPeriodo}"/>-->
+            <core:InvokeCommandAction Command="{Binding PageLoadCommand}" />
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
+
+    <!--<ScrollViewer x:Name="ScrollBase" ManipulationMode="TranslateX,System" HorizontalScrollMode="Enabled" VerticalScrollBarVisibility="Hidden"  >-->
+    <Grid x:Name="LayoutRoot" Margin="0" ManipulationMode="None" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--<header:PageHeader Grid.Row="0"/>-->
+        <Grid Margin="15,11,15,0" Grid.Row="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="131*"/>
+                <RowDefinition Height="13*"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="0,0,0,6" x:Name="GridHeader">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <HyperlinkButton Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Command="{Binding MudarPeriodo}" CommandParameter="-" Margin="0,0,10,0">
+                    <FontIcon Glyph="&#xE012;" FontWeight="Bold" />
+                </HyperlinkButton>
+                <HyperlinkButton Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Command="{Binding MudarPeriodo}" CommandParameter="+" Margin="10,0,0,0">
+                    <FontIcon Glyph="&#xE013;" FontWeight="Bold" />
+                </HyperlinkButton>
+                <StackPanel x:Name="PeriodoStackPanel" Orientation="Horizontal" Grid.Column="1" Margin="10,0" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding Periodo, ConverterParameter=\{0:MMMM\}, Converter={StaticResource StringFormatConverter}, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Periodo, ConverterParameter=\{0:yyyy\}, Converter={StaticResource StringFormatConverter}, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubheaderTextBlockStyle}" Margin="10,0,0,0" FontWeight="Bold"/>
+                </StackPanel>
+
+            </Grid>
+            <ListView ItemsSource="{Binding Lancamentos}" ManipulationMode="All" Grid.Row="1" x:Name="LancamentosListView" SelectionMode="Single" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Visibility="{Binding ExisteLancamentos, Converter={StaticResource BoolToVisibilityConverter}}" >
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior SourceObject="{Binding ElementName=LancamentosListView}" EventName="Tapped">
+                        <core:InvokeCommandAction Command="{Binding DataContext.SelecionarLancamento, ElementName=This}"  CommandParameter="{Binding SelectedItem, ElementName=LancamentosListView}" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,0,0,4" MinHeight="57">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="26*" />
+                                <ColumnDefinition Width="11*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border BorderBrush="{StaticResource FundoStyle2}" BorderThickness="0,0,0,1" Grid.ColumnSpan="3" Margin="0,0,1,0"/>
+                            <!--Retangulo-->
+                            <Grid VerticalAlignment="Center" MinHeight="62">
+                                <Rectangle Margin="0,5" RadiusY="5" RadiusX="5" Fill="{Binding Tipo, Converter={StaticResource TipoCorConverter}}"/>
+                                <StackPanel>
+                                    <TextBlock Grid.Column="0" FontFamily="Segoe UI Light"
+										FontSize="30" Foreground="White" 
+                                  
+										Text="{Binding DataLancamento, ConverterParameter=\{0:dd\}, Converter={StaticResource StringFormatConverter}}" Margin="0,10,0,0" TextAlignment="Center" />
+                                    <TextBlock Text="{Binding DataLancamento, ConverterParameter=\{0:ddd\}, Converter={StaticResource StringFormatConverter}}" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="12" Foreground="White" Margin="0,-10,0,0" TextAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+                            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                                <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Text="{Binding Tags}"  FontSize="16" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" />
+                                <TextBlock Text="{Binding Descricao}" FontSize="14" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Margin="9.833,0,0,0">
+                                <TextBlock Text="{Binding NomeConta}" Foreground="{StaticResource CorMenu}" FontSize="13" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Right"/>
+                                <TextBlock Text="{Binding ValorLancamento, ConverterParameter=\{0:c2\}, Converter={StaticResource StringFormatConverter}}"
+									TextWrapping="Wrap" Style="{StaticResource CaptionTextBlockStyle}" TextAlignment="Right" Height="21"
+									Margin="0" 
+                           />
+                            </StackPanel>
+                        </Grid>
+
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackPanel x:Name="EmptyStackPanel" Grid.Row="1" Visibility="{Binding ExisteLancamentos, Converter={StaticResource InverterBoolToVisibility}}" VerticalAlignment="Center" d:IsHidden="True">
+                <StackPanel.Transitions>
+                    <TransitionCollection/>
+                </StackPanel.Transitions>
+                <TextBlock x:Uid="ContaDetalhePageEmptyText1" Text="Não existe nada aqui" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,0,10" FontWeight="Bold" >
+                    <TextBlock.Transitions>
+                        <TransitionCollection/>
+                    </TextBlock.Transitions>
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <!--<Viewbox  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="58" Margin="0,0,5,0">
+                        <Grid>
+                            <Grid  Width="32" Height="32" Visibility="Collapsed" />
+                            <Path Data="M6.4507259,13.06125C8.0232571,13.039404,9.6199049,14.453237,10.222638,16.529187L14.752587,32.141883 15.476495,31.92508 13.483073,25.057838C12.794266,22.685525 13.667975,20.346211 15.431095,19.835208 17.195313,19.324104 19.183635,20.831314 19.872443,23.203728L21.847766,30.012969 22.506572,29.815766 20.977956,24.548736C20.289149,22.176321 21.161559,19.837808 22.924577,19.326705 24.688897,18.815001 26.676017,20.32271 27.365926,22.695125L28.877742,27.903555 29.53925,27.705154 28.591338,24.439335C27.901231,22.06692 28.776242,19.727807 30.539262,19.216804 32.302281,18.705101 34.291901,20.21281 34.979409,22.585224L38.721547,35.482402 42.216489,46.895167C42.992597,61.009952 27.666829,62.022357 27.666829,62.022357 20.230546,63.328872 9.7239026,51.624496 8.9427341,50.740993L3.0063887,45.268256C1.4763417,43.85815 1.2811795,41.583936 2.5648834,40.189427 3.8539678,38.794318 6.1353325,38.806521 7.6651901,40.216229L11.218748,43.492848 9.6054004,38.119216C9.5364903,37.942718,9.4608697,37.770814,9.4061788,37.583413L8.2643155,33.65169 3.8345274,18.382099C3.14439,16.010984 4.0181195,13.671871 5.7812289,13.160767 6.0019239,13.096792 6.2260789,13.064371 6.4507259,13.06125z M6.6197976,0L6.6236476,2.7328043C7.4594783,2.5550518 25.390323,-1.1575527 36.5673,4.2139196 36.5673,4.2139196 37.650689,5.3526812 36.512601,6.380764 36.512601,6.380764 26.863006,1.5034666 6.6275471,5.3702521L6.6327375,9.4180005 0,4.6527414z" Stretch="Uniform" Width="16" Height="16" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" Fill="{ThemeResource SystemControlForegroundAccentBrush}">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Grid>
+                    </Viewbox>-->
+                    <TextBlock x:Uid="ContaDetalhePageEmptyText2" Text="Tente alternar o período, usando a barra de período acima" Style="{StaticResource BodyTextBlockStyle}" Width="235" TextAlignment="Center" />
+                    <!--<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="58" Margin="5,0,0,0">
+                        <Grid>
+                            <Grid  Width="48" Height="48" Visibility="Collapsed" />
+                            <Path Data="M22.695742,8.5630462C23.093088,8.5653221 23.4802,8.6517232 23.839085,8.8312986 25.480997,9.6542133 25.9172,12.109899 24.814293,14.320185L17.547335,28.8617 18.22574,29.193098 21.421165,22.796634C22.526573,20.585748 24.755791,19.461355 26.399004,20.282451 28.039616,21.103945 28.477119,23.560431 27.374311,25.770016L24.203688,32.112381 24.822193,32.41448 27.274109,27.507008C28.37822,25.297319 30.604736,24.172227 32.245449,24.994022 33.889961,25.815617 34.326164,28.271402 33.223259,30.482189L30.798836,35.333658 31.419743,35.637159 32.940754,32.593578C34.041061,30.383289 36.272781,29.259495 37.914692,30.078491 39.556702,30.900785 39.992805,33.359074 38.889999,35.566759L32.883453,47.587589 27.708813,58.334225C18.701044,69.227959 6.7570037,59.571915 6.7570037,59.571915 0.37279816,55.46254 0.63451712,39.578434 0.65801762,38.557039L0.013481474,30.531689C-0.1532069,28.4575 1.2451817,26.654812 3.1357567,26.502413 5.0290808,26.352015 6.6944432,27.909306 6.8624152,29.982191L7.2491369,34.801165 9.7100763,29.759493C9.7790775,29.583193,9.8403768,29.405495,9.9275779,29.230198L11.756992,25.568119 18.866447,11.345503C19.726999,9.6198102,21.276646,8.5549169,22.695742,8.5630462z M30.546284,0L37.166,4.6527407 30.533184,9.4180003 30.538385,5.3702526C10.302943,1.5034065 0.65330689,6.3807039 0.65330683,6.3807044 -0.48461853,5.3526807 0.59867762,4.2139196 0.59867732,4.2139192 11.775525,-1.1575527 29.706396,2.5549917 30.542284,2.7327347z" Stretch="Uniform" Fill="{ThemeResource SystemControlForegroundAccentBrush}" Width="26" Height="26" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Grid>
+                    </Viewbox>-->
+                </StackPanel>
+                <TextBlock x:Uid="ContaDetalhePageEmptyText3" Text="Você pode também adicionar novas despesas ou receitas clicando no botão abaixo." HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,10" Style="{StaticResource BodyTextBlockStyle}" TextAlignment="Center"/>
+                <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Height="58">
+                    <Grid>
+                        <Grid  Width="48" Height="48" Visibility="Visible">
+                            <Path Data="M50.5,4.7500001C25.232973,4.75 4.75,25.232973 4.7500001,50.5 4.75,75.767029 25.232973,96.25 50.5,96.25 75.767029,96.25 96.25,75.767029 96.25,50.5 96.25,25.232973 75.767029,4.75 50.5,4.7500001z M50.5,0C78.390381,0 101,22.609621 101,50.5 101,78.390381 78.390381,101 50.5,101 22.609621,101 0,78.390381 0,50.5 0,22.609621 22.609621,0 50.5,0z" Stretch="Fill" Fill="{ThemeResource SystemControlForegroundAccentBrush}" x:Name="Stroke" Visibility="Visible" />
+                        </Grid>
+                        <Path Data="M19.833,0L32.5,0 32.5,19.833999 52.334,19.833999 52.334,32.500999 32.5,32.500999 32.5,52.333 19.833,52.333 19.833,32.500999 0,32.500999 0,19.833999 19.833,19.833999z" Stretch="Uniform" Fill="{ThemeResource SystemControlForegroundAccentBrush}" Width="26" Height="26" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="0" />
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                </Viewbox>
+
+
+
+            </StackPanel>
+
+            <!--Rodapé-->
+            <Border Grid.Row="2" BorderBrush="#FF29B4B1" BorderThickness="0,1,0,0" Margin="0,5,0,0">
+                <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Center" Margin="0,5,0,0" HorizontalAlignment="Right">
+
+                    <TextBlock x:Uid="ContaDetalhePageLabelSaldoPrevisto" Text="Saldo previsto: " FontSize="16" Foreground="#FF616161" VerticalAlignment="Center" Margin="0,0,15,0" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Right" TextAlignment="Right" />
+                    <TextBlock Text="{Binding SaldoPrevisto, ConverterParameter=\{0:c2\}, Converter={StaticResource StringFormatConverter}}"  Foreground="{Binding SaldoPrevisto, Converter={StaticResource SaldoCorConverter}}" FontSize="16" VerticalAlignment="Center" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Right" TextAlignment="Right" Margin="0,0,15,0" />
+
+                    <TextBlock x:Uid="ContaDetalhePageLabelSaldo" Text="Saldo: " FontSize="16" Foreground="#FF616161" VerticalAlignment="Center" Margin="0,0,15,0" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Right" TextAlignment="Right" />
+                    <TextBlock Text="{Binding Saldo, ConverterParameter=\{0:c2\}, Converter={StaticResource StringFormatConverter}}"  Foreground="{Binding Saldo, Converter={StaticResource SaldoCorConverter}}" FontSize="16" VerticalAlignment="Center" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Right" TextAlignment="Right" />
+
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </Grid>
+    <!--</ScrollViewer>-->
+</Page>

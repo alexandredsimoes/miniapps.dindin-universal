@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{076F5FF2-99D0-48DD-939F-D6DE501DC8BB}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DinDinPro.Universal</RootNamespace>
+    <AssemblyName>DinDinPro.Universal</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>DinDinPro.Universal_StoreKey.pfx</PackageCertificateKeyFile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <ApplicationInsightsResourceId>/subscriptions/089e6fdf-9448-4d67-bf4c-81bfa148dc75/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/DinDinPro.Universal</ApplicationInsightsResourceId>
+    <PackageCertificateThumbprint>2D51C3C20876E30FBD9442F41058D0DBEF58ADB7</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="DinDinPro.Universal_StoreKey.pfx" />
+    <None Include="project.json" />
+    <None Include="Service References\Application Insights\ConnectedService.json" />
+    <PRIResource Include="Strings\pt-BR\Resources.resw" />
+    <PRIResource Include="Strings\pt\Resources.resw" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aggregators\DecimalInputEvent.cs" />
+    <Compile Include="Aggregators\DecimalnputEventRefresh.cs" />
+    <Compile Include="Aggregators\PinInputEvent.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppShell.xaml.cs">
+      <DependentUpon>AppShell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Behaviors\OpenMenuFlyoutAction.cs" />
+    <Compile Include="Converters\BooleanToSwitchText.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\BrushTipoLancamentoConverter.cs" />
+    <Compile Include="Converters\ColorConverter.cs" />
+    <Compile Include="Converters\DataConverter.cs" />
+    <Compile Include="Converters\DataParaExtensoConverter.cs" />
+    <Compile Include="Converters\DateTimeParaDateTimeOffsetConverter.cs" />
+    <Compile Include="Converters\FinalRepeticaoConverterToString.cs" />
+    <Compile Include="Converters\Int32ToStringConverter.cs" />
+    <Compile Include="Converters\InvertBoolean.cs" />
+    <Compile Include="Converters\InvertedBoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\InverterBoolToVisibility.cs" />
+    <Compile Include="Converters\LabelConvertor.cs" />
+    <Compile Include="Converters\ListaSelecaoTipoLancamentoConverter.cs" />
+    <Compile Include="Converters\ListToStringCommandConverter.cs" />
+    <Compile Include="Converters\ObjectToMenuItemConverter.cs" />
+    <Compile Include="Converters\ParameterToVisibilityConverter.cs" />
+    <Compile Include="Converters\PeriodoToBooleanConverter.cs" />
+    <Compile Include="Converters\PeriodoToVisibilityConverter.cs" />
+    <Compile Include="Converters\PinValueToColorConverter.cs" />
+    <Compile Include="Converters\RepeticaoApuracaoVisibility.cs" />
+    <Compile Include="Converters\RepeticaoVisibilityConverter.cs" />
+    <Compile Include="Converters\SaldoCorConverter.cs" />
+    <Compile Include="Converters\SelecaoConverter.cs" />
+    <Compile Include="Converters\SelecaoDataConverter.cs" />
+    <Compile Include="Converters\StringDateFormatMainPageConverter.cs" />
+    <Compile Include="Converters\StringFormatConverter.cs" />
+    <Compile Include="Converters\StringToInt32Converter.cs" />
+    <Compile Include="Converters\StringToVisibility.cs" />
+    <Compile Include="Converters\TagToBooleanConverter.cs" />
+    <Compile Include="Converters\TipoBooleanConverter.cs" />
+    <Compile Include="Converters\TipoCorConverter.cs" />
+    <Compile Include="Converters\TipoRepeticaoConverter.cs" />
+    <Compile Include="Converters\TipoToBooleanConverter.cs" />
+    <Compile Include="DesignViewModels\ContaDetalhesPageDesignViewModel.cs" />
+    <Compile Include="DesignViewModels\CriarLancamentoPageDesignViewModel.cs" />
+    <Compile Include="DesignViewModels\LancamentoDetalhePageDesignViewModel.cs" />
+    <Compile Include="DesignViewModels\MainPageDesignViewModel.cs" />
+    <Compile Include="NavMenuItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AlertMessageService.cs" />
+    <Compile Include="Services\DialogCommand.cs" />
+    <Compile Include="Services\IAlertMessageService.cs" />
+    <Compile Include="Services\IOneDriveService.cs" />
+    <Compile Include="Services\OneDriveService.cs" />
+    <Compile Include="UserControls\BusyIndicatorControl.xaml.cs">
+      <DependentUpon>BusyIndicatorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DecimalInputUserControl.xaml.cs">
+      <DependentUpon>DecimalInputUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NavMenuListView.cs" />
+    <Compile Include="UserControls\PageHeader.xaml.cs">
+      <DependentUpon>PageHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PinUserControl.xaml.cs">
+      <DependentUpon>PinUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SelecaoDataTemplateSelector.cs" />
+    <Compile Include="UserControls\TabHeader.xaml.cs">
+      <DependentUpon>TabHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AppShellViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\ConfiguracaoPageViewModel.cs" />
+    <Compile Include="ViewModels\ContaDetalhePageViewModel.cs" />
+    <Compile Include="ViewModels\ContaListPageViewModel.cs" />
+    <Compile Include="ViewModels\ContaPageViewModel.cs" />
+    <Compile Include="ViewModels\CriarLancamentoPageViewModel.cs" />
+    <Compile Include="ViewModels\DecimalInputPageViewModel.cs" />
+    <Compile Include="ViewModels\FormaPagamentoCriarPageViewModel.cs" />
+    <Compile Include="ViewModels\FormaPagamentoPageViewModel.cs" />
+    <Compile Include="ViewModels\IDecimalInputUserControlViewModel.cs" />
+    <Compile Include="ViewModels\IPinInputPageViewModel.cs" />
+    <Compile Include="ViewModels\LancamentoDetalhePageViewModel.cs" />
+    <Compile Include="ViewModels\LoginPageViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\PinInputPageViewModel.cs" />
+    <Compile Include="ViewModels\RelatorioPageViewModel.cs" />
+    <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\TagsCriarPageViewModel.cs" />
+    <Compile Include="ViewModels\TagsPageViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\ConfiguracaoPage.xaml.cs">
+      <DependentUpon>ConfiguracaoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContaDetalhePage.xaml.cs">
+      <DependentUpon>ContaDetalhePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContaListPage.xaml.cs">
+      <DependentUpon>ContaListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContaPage.xaml.cs">
+      <DependentUpon>ContaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CriarLancamentoPage.xaml.cs">
+      <DependentUpon>CriarLancamentoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DecimalInputPage.xaml.cs">
+      <DependentUpon>DecimalInputPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormaPagamentoCriarPage.xaml.cs">
+      <DependentUpon>FormaPagamentoCriarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormaPagamentoPage.xaml.cs">
+      <DependentUpon>FormaPagamentoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LancamentoDetalhePage.xaml.cs">
+      <DependentUpon>LancamentoDetalhePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PinInputPage.xaml.cs">
+      <DependentUpon>PinInputPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RelatorioPage.xaml.cs">
+      <DependentUpon>RelatorioPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SobrePage.xaml.cs">
+      <DependentUpon>SobrePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TagsCriarPage.xaml.cs">
+      <DependentUpon>TagsCriarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TagsPage.xaml.cs">
+      <DependentUpon>TagsPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="DinDinPro.Universal_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\100x100.scale-200.png" />
+    <Content Include="Assets\106x106.scale-240.png" />
+    <Content Include="Assets\107x107.scale-150.png" />
+    <Content Include="Assets\1152x1920.scale-240.png" />
+    <Content Include="Assets\120x120.scale-240.png" />
+    <Content Include="Assets\1240x1240.scale-100.png" />
+    <Content Include="Assets\1240x1240.scale-125.png" />
+    <Content Include="Assets\1240x1240.scale-150.png" />
+    <Content Include="Assets\1240x1240.scale-200.png" />
+    <Content Include="Assets\1240x1240.scale-400.png" />
+    <Content Include="Assets\1240x600.scale-200.png" />
+    <Content Include="Assets\1240x600.scale-400.png" />
+    <Content Include="Assets\142x142.scale-200.png" />
+    <Content Include="Assets\150x150.scale-100.png" />
+    <Content Include="Assets\150x150.scale-125.png" />
+    <Content Include="Assets\150x150.scale-150.png" />
+    <Content Include="Assets\150x150.scale-200.png" />
+    <Content Include="Assets\150x150.scale-400.png" />
+    <Content Include="Assets\176x176.scale-400.png" />
+    <Content Include="Assets\188x188.scale-125.png" />
+    <Content Include="Assets\200x200.scale-400.png" />
+    <Content Include="Assets\225x225.scale-150.png" />
+    <Content Include="Assets\24x24.scale-100.png" />
+    <Content Include="Assets\284x284.scale-100.png" />
+    <Content Include="Assets\284x284.scale-125.png" />
+    <Content Include="Assets\284x284.scale-150.png" />
+    <Content Include="Assets\284x284.scale-200.png" />
+    <Content Include="Assets\284x284.scale-400.png" />
+    <Content Include="Assets\300x300.scale-200.png" />
+    <Content Include="Assets\30x30.scale-125.png" />
+    <Content Include="Assets\310x150.scale-100.png" />
+    <Content Include="Assets\310x310.scale-100.png" />
+    <Content Include="Assets\360x360.scale-240.png" />
+    <Content Include="Assets\36x36.scale-150.png" />
+    <Content Include="Assets\44x44.scale-100.png" />
+    <Content Include="Assets\48x48.scale-200.png" />
+    <Content Include="Assets\50x50.scale-100.png" />
+    <Content Include="Assets\55x55.scale-125.png" />
+    <Content Include="Assets\600x600.scale-400.png" />
+    <Content Include="Assets\620x300.scale-100.png" />
+    <Content Include="Assets\620x300.scale-200.png" />
+    <Content Include="Assets\620x620.scale-200.png" />
+    <Content Include="Assets\63x63.scale-125.png" />
+    <Content Include="Assets\66x66.scale-150.png" />
+    <Content Include="Assets\71x71.scale-100.png" />
+    <Content Include="Assets\71x71.scale-125.png" />
+    <Content Include="Assets\71x71.scale-150.png" />
+    <Content Include="Assets\71x71.scale-200.png" />
+    <Content Include="Assets\71x71.scale-400.png" />
+    <Content Include="Assets\740x360.scale-240.png" />
+    <Content Include="Assets\744x360.scale-240.png" />
+    <Content Include="Assets\75x75.scale-150.png" />
+    <Content Include="Assets\88x88.scale-200.png" />
+    <Content Include="Assets\89x89.scale-125.png" />
+    <Content Include="Assets\96x96.scale-100.png" />
+    <Content Include="Assets\96x96.scale-125.png" />
+    <Content Include="Assets\96x96.scale-150.png" />
+    <Content Include="Assets\96x96.scale-200.png" />
+    <Content Include="Assets\96x96.scale-400.png" />
+    <Content Include="Assets\BadgeLogo.scale-100.png" />
+    <Content Include="Assets\BadgeLogo.scale-125.png" />
+    <Content Include="Assets\BadgeLogo.scale-150.png" />
+    <Content Include="Assets\BadgeLogo.scale-200.png" />
+    <Content Include="Assets\BadgeLogo.scale-400.png" />
+    <Content Include="Assets\DinDinPro.png" />
+    <Content Include="Assets\Logo.scale-240.png" />
+    <Content Include="Assets\MoneyIn.png" />
+    <Content Include="Assets\MoneyOut.png" />
+    <Content Include="Assets\santa6-2.png" />
+    <Content Include="Assets\SmallLogo.scale-240.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-240.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\Square71x71Logo.scale-100.png" />
+    <Content Include="Assets\Square71x71Logo.scale-240.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-240.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Assets\WideLogo.scale-240.png" />
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="AppShell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Geral.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Styles\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\BusyIndicatorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\DecimalInputUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PageHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PinUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\TabHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ConfiguracaoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContaDetalhePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContaListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContaPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CriarLancamentoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DecimalInputPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FormaPagamentoCriarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FormaPagamentoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LancamentoDetalhePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DeviceFamily-Mobile\TagsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PinInputPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RelatorioPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SobrePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TagsCriarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TagsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
+    <SDKReference Include="SQLite.UWP.2015, Version=3.12.1">
+      <Name>SQLite for Universal Windows Platform</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="DinDinPro.Universal.BackgroundService\DinDinPro.Universal.BackgroundService.csproj">
+      <Project>{3bfd6287-9dbd-4e95-8eea-4934a14fdba3}</Project>
+      <Name>DinDinPro.Universal.BackgroundService</Name>
+    </ProjectReference>
+    <ProjectReference Include="DinDinPro.Universal.Log\DinDinPro.Universal.Log.csproj">
+      <Project>{47649478-5440-49cd-9a30-7458babb4335}</Project>
+      <Name>DinDinPro.Universal.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="DinDinPro.Universal.Model\DinDinPro.Universal.Model.csproj">
+      <Project>{42df558e-8953-4ba7-8630-0f7fbd6dba38}</Project>
+      <Name>DinDinPro.Universal.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Syncfusion.Data.UWP, Version=13.4460.0.53, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Assemblies for Universal Windows\10.0\Syncfusion.Data.UWP.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.UWP, Version=13.4460.0.53, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Assemblies for Universal Windows\10.0\Syncfusion.SfChart.UWP.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfShared.UWP, Version=13.4460.0.53, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Assemblies for Universal Windows\10.0\Syncfusion.SfShared.UWP.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.UWP, Version=13.4460.0.53, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\14.1.0.41\Assemblies for Universal Windows\10.0\Syncfusion.XlsIO.UWP.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

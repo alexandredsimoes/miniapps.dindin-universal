@@ -1,0 +1,206 @@
+﻿<Page
+    x:Class="DinDinPro.Universal.Views.RelatorioPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DinDinPro.Universal.Views"
+    xmlns:converters="using:DinDinPro.Universal.Converters"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"    
+    xmlns:i="using:Microsoft.Xaml.Interactivity"    
+    xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=Relatorio}">
+
+    <Page.Resources>
+        <converters:StringDateFormatMainPageConverter x:Key="StringDateFormatMainPageConverter" />
+        <converters:StringFormatConverter x:Name="StringFormatConverter"/>
+    </Page.Resources>
+
+    <i:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{Binding PageLoad}"/>
+        </core:EventTriggerBehavior>
+    </i:Interaction.Behaviors>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Margin="15,11,15,0">
+            <StackPanel.Resources>
+                <Style x:Key="LineStyle" TargetType="Line">
+                    <Setter Property="Stroke" Value="#FF5D5A5A"/>
+                    <Setter Property="StrokeThickness" Value="1"/>
+                </Style>
+
+                <DataTemplate x:Key="series1tooltiptemplate">
+                    <Border Background="{Binding Interior}">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="Images/eficon.png" Grid.Column="0" Height="70" />
+                            <StackPanel Grid.Column="1" Margin="10">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal"  >
+                                    <TextBlock Text="{Binding Item.India}" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                                   Foreground="White" FontSize="18" FontWeight="Bold" />
+                                    <TextBlock Text="%" HorizontalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Bold" />
+                                </StackPanel>
+                                <TextBlock Text="Efficiency" Foreground="White" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+
+                <DataTemplate x:Key="series2tooltiptemplate">
+                    <Border Background="{Binding Interior}">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="Images/eficon.png" Grid.Column="0" Height="70" />
+                            <StackPanel Grid.Column="1" Margin="10">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal"  >
+                                    <TextBlock Text="{Binding Item.Germany}" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                                   Foreground="White" FontSize="18" FontWeight="Bold" />
+                                    <TextBlock Text="%" HorizontalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Bold" />
+                                </StackPanel>
+                                <TextBlock Text="Efficiency" Foreground="White" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+
+                <DataTemplate x:Key="series3tooltiptemplate">
+                    <Border Background="{Binding Interior}">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="Images/eficon.png" Grid.Column="0" Height="70" />
+                            <StackPanel Grid.Column="1" Margin="10">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal"  >
+                                    <TextBlock Text="{Binding Item.England}" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                                   Foreground="White" FontSize="18" FontWeight="Bold" />
+                                    <TextBlock Text="%" HorizontalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Bold" />
+                                </StackPanel>
+                                <TextBlock Text="Efficiency" Foreground="White" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+
+                <DataTemplate x:Key="labelTemplate">
+                    <TextBlock Text="{Binding LabelContent}" FontSize="14" Foreground="{StaticResource TextCorStyle}"/>
+                </DataTemplate>
+
+                <Style x:Key="majorTickLineStyle" TargetType="Line">
+                    <Setter Property="Stroke" Value="#FF1D1D1D"/>
+                    <Setter Property="StrokeThickness" Value="1"/>
+                </Style>
+
+                <Style x:Key="axisLineStyle" TargetType="Line">
+                    <Setter Property="Stroke" Value="{StaticResource ApplicationForegroundThemeBrush}"/>
+                    <Setter Property="StrokeThickness" Value="1"/>
+                </Style>
+            </StackPanel.Resources>
+            <ListView Grid.Row="1"  ItemsSource="{Binding Previsao, Mode=OneWay}" x:Name="rdlPrevisao" Margin="15,11,15,15">
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="Despesas futuras" x:Uid="MainPageDespesasFuturasTitulo" FontSize="24" Grid.Row="0" Style="{StaticResource SubtitleTextBlockStyle}" />
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Margin" Value="0,5" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid  Margin="0,0,-0.333,0">
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="18*"/>
+                            </Grid.RowDefinitions>
+
+
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="81*"/>
+                                    <ColumnDefinition Width="94*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Data, Converter={StaticResource StringDateFormatMainPageConverter}, ConverterParameter=\{0:yyyy MMMM\}}" Margin="0,0,15,0" FontSize="16" />
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Valor, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:c2\}}" FontSize="16" HorizontalAlignment="Right" />
+                                <Border Grid.Row="1" BorderBrush="{StaticResource TextCorStyle}" BorderThickness="0,0,0,0.5" Margin="0,0,0,-0.333" Grid.ColumnSpan="2" />
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <chart:SfChart x:Name="lineChart" Grid.Row="1">
+                        <chart:SfChart.Header>
+                            <TextBlock FontSize="22" FontFamily="Segoe UI" Margin="10">Efficiency of oil-fired power production</TextBlock>
+                        </chart:SfChart.Header>
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend DockPosition="Top" FontSize="18"/>
+                        </chart:SfChart.Legend>
+
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:CategoryAxis ShowTrackBallInfo="True" LabelFormat="MMMM"   
+                                        FontSize="18" PlotOffset="20" Header="Mês"
+                                        LabelTemplate="{StaticResource labelTemplate}"/>
+                        </chart:SfChart.PrimaryAxis>
+
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis FontSize="18" RangePadding="Round"  Header="Efficiency(%)"
+                                         TickLineSize="10" Minimum="0" Maximum="{Binding DespesaMaximaNoMes}" Interval="4"
+                                         LabelTemplate="{StaticResource labelTemplate}"/>
+                        </chart:SfChart.SecondaryAxis>
+
+                        <chart:LineSeries EnableAnimation="False" ShowTooltip="False" 
+                                  chart:ChartTooltip.EnableAnimation="False" 
+                                  XBindingPath="Data" YBindingPath="Receita" ItemsSource="{Binding DadosGrafico}" 
+                                  Label="Receita" chart:ChartTooltip.ShowDuration="1000"
+                                  TooltipTemplate="{StaticResource series1tooltiptemplate}" Foreground="{StaticResource TextCorStyle}" Interior="Green">
+                            <chart:LineSeries.AdornmentsInfo>
+                                <chart:ChartAdornmentInfo Symbol="Custom"  ShowMarker="True" >
+                                    <chart:ChartAdornmentInfo.SymbolTemplate>
+                                        <DataTemplate>
+                                            <Grid IsHitTestVisible="False" >
+                                                <Ellipse Fill="Green" Height="18" Width="18" StrokeThickness="3" Stroke="White"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </chart:ChartAdornmentInfo.SymbolTemplate>
+                                </chart:ChartAdornmentInfo>
+                            </chart:LineSeries.AdornmentsInfo>
+                        </chart:LineSeries>
+
+                        <chart:LineSeries EnableAnimation="False" ShowTooltip="False" 
+                                  chart:ChartTooltip.EnableAnimation="False" Label="Despesa" 
+                                  ItemsSource="{Binding DadosGrafico}" XBindingPath="Data" YBindingPath="Despesa" 
+                                  chart:ChartTooltip.ShowDuration="5000"
+                                  TooltipTemplate="{StaticResource series2tooltiptemplate}" Foreground="{StaticResource TextCorStyle}" Interior="Red">
+                            <chart:LineSeries.AdornmentsInfo>
+                                <chart:ChartAdornmentInfo Symbol="Custom" ShowLabel="True" ShowMarker="True" >
+                                    <chart:ChartAdornmentInfo.LabelTemplate>
+                                        <DataTemplate>
+                                            <Grid IsHitTestVisible="False">
+                                                <Ellipse Fill="Red" Height="18" Width="18" StrokeThickness="3" Stroke="White"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </chart:ChartAdornmentInfo.LabelTemplate>
+                                </chart:ChartAdornmentInfo>
+                            </chart:LineSeries.AdornmentsInfo>
+                        </chart:LineSeries>
+
+                    </chart:SfChart>
+        </StackPanel> 
+    </Grid>
+</Page>

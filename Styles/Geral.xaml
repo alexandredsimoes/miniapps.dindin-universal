@@ -1,0 +1,241 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DinDinPro.Universal.Styles"
+    xmlns:mvvm="using:DinDinPro.Universal.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"        
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+    mc:Ignorable="d"    >
+
+    <mvvm:ViewModelLocator x:Key="Locator" />
+    
+    <!--<SolidColorBrush Color="#FFFFFEFF" x:Key="TextCorStyle"/>
+        <SolidColorBrush Color="#FF00BD9D" x:Key="FundoMenu" />
+        <SolidColorBrush Color="#FF426175" x:Key="FundoStyle" />
+        <SolidColorBrush Color="#FF038B75" x:Key="FundoStyle2" />
+        <SolidColorBrush Color="#FF19384D" x:Key="FundoStyle3" />-->
+
+    <SolidColorBrush Color="#89020202" x:Key="TextCorStyle"/>
+    <SolidColorBrush Color="#FF29B4B1" x:Key="FundoMenu" />
+    <SolidColorBrush Color="#FFF1F7F9" x:Key="FundoStyleClaro" />
+
+    <SolidColorBrush Color="#FFCFE9EF" x:Key="FundoStyle" />
+    <SolidColorBrush Color="#FFA3D7DC" x:Key="FundoStyle2" />
+    <SolidColorBrush Color="#FF79C8CD" x:Key="FundoStyle3" />
+
+
+    <!--<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0"  x:Key="FundoStyle">
+            <GradientStop Color="#FF426175  " Offset="1"/>
+            <GradientStop Color="#E9426175" Offset="0"/>
+        </LinearGradientBrush>-->
+
+    <TransitionCollection x:Name="Transicao">
+        <ContentThemeTransition HorizontalOffset="385" VerticalOffset="0"/>
+    </TransitionCollection>
+    <Style x:Name="EstiloAnimacao" TargetType="TextBlock">
+        <Setter Property="Transitions" Value="{StaticResource Transicao}" />
+    </Style>
+    
+    <SolidColorBrush x:Key="CorMenu" Color="#FF79B83C"/>
+
+    <ControlTemplate TargetType="Button" x:Key="ButtonFake">
+        <Border Background="Transparent">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal"/>
+                    <VisualState x:Name="MouseOver"/>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentContainer" 
+                                       Storyboard.TargetProperty="Foreground">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ApplicationForegroundThemeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PressedHighlightBackground" 
+                                       Storyboard.TargetProperty="Background">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Null}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" 
+                                       Storyboard.TargetProperty="BorderBrush">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ApplicationForegroundThemeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <DoubleAnimation Duration="0" To="5.794" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="ContentContainer" d:IsOptimized="True"/>
+                            <DoubleAnimation Duration="0" To="0.319" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.SkewY)" Storyboard.TargetName="ContentContainer" d:IsOptimized="True"/>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentContainer" 
+                                       Storyboard.TargetProperty="Foreground">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonDisabledBackgroundThemeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" 
+                                       Storyboard.TargetProperty="BorderBrush">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonDisabledBackgroundThemeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" 
+                                       Storyboard.TargetProperty="Background">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border x:Name="ButtonBackground" BorderBrush="{TemplateBinding BorderBrush}"  
+            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0" 
+            Background="{TemplateBinding Background}" Margin="{StaticResource ButtonBorderThemeThickness}" >
+                <Border x:Name="PressedHighlightBackground" Background="Transparent">
+                    <ContentControl x:Name="ContentContainer" Foreground="{TemplateBinding Foreground}" 
+                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="{TemplateBinding Padding}" 
+                      Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontWeight="Normal">
+                        <ContentControl.RenderTransform>
+                            <CompositeTransform/>
+                        </ContentControl.RenderTransform>
+                    </ContentControl>
+                </Border>
+            </Border>
+        </Border>
+    </ControlTemplate>
+
+    <Style x:Name="ButtonFakeStyle" TargetType="Button">
+        <Setter Property="HorizontalAlignment"  Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment"  Value="Left" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />        
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template" Value="{StaticResource ButtonFake}" />
+        <Setter Property="Transitions" Value="{StaticResource Transicao}" />
+        <Setter Property="Margin" Value="0,10,0,10" />
+    </Style>
+
+    <Style x:Name="BorderValor" TargetType="Border">
+        <Setter Property="BorderBrush"  Value="{StaticResource TextCorStyle}" />
+        <Setter Property="BorderThickness"  Value="3" />
+        <Setter Property="Padding"  Value="0,0,10,0" />
+        <Setter Property="Height" Value="80" />
+        <Setter Property="Margin" Value="13" />
+    </Style>
+
+    <Style x:Name="Borda" TargetType="Border" >
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{ThemeResource SystemControlBackgroundAccentBrush}"/>
+        <!--<Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Height" Value="1.5" />
+        <Setter Property="Margin" Value="15,3,15,10" />-->
+
+    </Style>
+
+    <Style x:Name="TituloStyle" TargetType="TextBlock" >
+        <Setter Property="Foreground" Value="#DF7E0B0B" />
+    </Style>
+
+    <Style x:Name="TextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}" >
+        <Setter Property="Foreground"  Value="{StaticResource TextCorStyle}" />
+        <Setter Property="FontSize"  Value="22" />
+        <Setter Property="Margin"  Value="10,0,0,0" />
+    </Style>
+
+    <Style x:Name="TextBlockValor" TargetType="TextBlock">
+        <Setter Property="FontSize"  Value="46" />
+        <Setter Property="Foreground"  Value="Black" />
+        <Setter Property="FontWeight"  Value="Bold" />
+        <Setter Property="Padding"  Value="0,0,10,0" />
+        <Setter Property="Height" Value="100" />
+        <Setter Property="TextAlignment" Value="Right" />
+    </Style>
+
+
+
+    <DataTemplate x:Key="PivotHeaderTemplate">
+        <Grid>
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Foreground="{StaticResource TextCorStyle}" Text="{Binding}" Margin="0,0,25,0" />
+        </Grid>
+    </DataTemplate>
+
+
+    <DataTemplate x:Name="MessageDialogTemplate">
+        <Grid Margin="0" Width="1000">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--<uc:PageHeader Grid.Row="0" Margin="0" Padding="0" />-->
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Name="MessageDialogContentTemplate">
+        <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+    </DataTemplate>
+
+    <!--Converters-->
+    <!--
+        <converters:ListToStringCommandConverter x:Key="ListToStringCommandConverter" />
+        <converters:SaldoCorConverter x:Key="SaldoCorConverter" />
+        <converters:DataParaExtensoConverter x:Key="DataParaExtensoConverter" />
+        <converters:StringFormatConverter x:Key="StringFormatConverter" />
+        <converters:TipoCorConverter x:Key="TipoCorConverter" />
+        <converters:TipoRepeticaoConverter x:Key="TipoRepeticaoConverter" />
+        <converters:BooleanToSwitchText x:Key="BooleanToSwitchText" />
+        <converters:BrushTipoLancamentoConverter x:Key="BrushTipoLancamentoConverter" />
+        <converters:PeriodoToBooleanConverter x:Key="PeriodoToBooleanConverter" />
+        <converters:PeriodoToVisibilityConverter x:Key="PeriodoToVisibilityConverter" />
+        <converters:RepeticaoApuracaoVisibility x:Key="RepeticaoApuracaoVisibility" />
+        <converters:RepeticaoVisibilityConverter x:Key="RepeticaoVisibilityConverter" />
+        <converters:InverterBoolToVisibility x:Key="InverseBooleanToVisibilityConverter" />
+        <converters:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        
+        <converters:StringToVisibility x:Key="EmptyStringToVisibilityConverter"/>
+        -->
+
+    <DataTemplate x:Name="HeaderTemplate">
+        <TextBlock Text="{Binding}" Foreground="{StaticResource TextCorStyle}" Style="{StaticResource BaseTextBlockStyle}" />
+    </DataTemplate>
+
+    <Style x:Name="TextGeral" TargetType="TextBox">
+        <Setter Property="Padding"  Value="5" />
+        <Setter Property="BorderThickness"  Value="2" />
+        <Setter Property="Background"  Value="#BFF1ECEC" />
+        <Setter Property="BorderBrush"  Value="{StaticResource TextBoxBorderThemeBrush}" />
+        <Setter Property="FontSize"  Value="25" />
+        <Setter Property="Height"  Value="65" />        
+    </Style>
+    <Style x:Key="AppTitleTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="Margin" Value="12,6,0,6" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="TitleTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource TitleTextBlockStyle}">
+        <Setter Property="Margin" Value="0,1,0,18" />
+    </Style>
+
+    <Style x:Key="ParagraphTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBlockStyle}">
+        <Setter Property="Margin" Value="0,1,0,34" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="IconButtonStyle" TargetType="Button" BasedOn="{StaticResource TextBlockButtonStyle}">
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Width" Value="48" />
+        <Setter Property="Height" Value="48" />
+    </Style>
+
+    <Style x:Key="IconTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Width" Value="48" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="MenuTitleTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBlockStyle}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="PageScrollViewerStyle" TargetType="ScrollViewer">
+        <Setter Property="Padding" Value="24,20,24,24" />
+    </Style>
+</ResourceDictionary>

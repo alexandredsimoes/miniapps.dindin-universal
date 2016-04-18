@@ -1,0 +1,116 @@
+﻿<Page
+    x:Class="DinDinPro.Universal.Views.ContaListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DinDinPro.Universal.Views"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"    
+    xmlns:converters="using:DinDinPro.Universal.Converters"
+    xmlns:dvm="using:DinDinPro.Universal.DesignViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" x:Name="This"
+    DataContext="{Binding Source={StaticResource Locator}, Path=ContaList}"
+    d:DataContext="{d:DesignInstance dvm:MainPageDesignViewModel, IsDesignTimeCreatable=True}">
+
+    <Page.Resources>
+        <!--Converters-->
+        <converters:SaldoCorConverter x:Key="SaldoCorConverter" />
+        <converters:StringFormatConverter x:Name="StringFormatConverter"/>
+        <converters:Labelconvertor x:Name="Labelconvertor"/>
+        <converters:ColorConverter x:Name="ColorConverter"/>
+        <converters:TipoCorConverter x:Key="TipoCorConverter" />
+        <converters:ParameterToVisibilityConverter x:Key="ParameterToVisibilityConverter" />
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:InverterBoolToVisibility x:Key="InverterBoolToVisibility" />
+    </Page.Resources>
+
+    <interactivity:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{Binding PageLoad}"/>
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="CommandBarMain">
+            <AppBarButton Icon="Add" x:Uid="AppBarButtonCreateAccount" x:Name="AppBarButtonCreateAccount" Command="{Binding CriarConta}" />
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!--Contas-->
+        <RelativePanel Margin="15,15,15,75">
+            <ListView Grid.Row="1" ItemsSource="{Binding Contas}" x:Name="rdlContas" Visibility="{Binding ExisteContas, Converter={StaticResource BoolToVisibilityConverter}}" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <!--<Setter Property="Margin" Value="0,5" />-->
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="86" Margin="0,0,-0.333,0">
+                            <interactivity:Interaction.Behaviors>
+                                <core:EventTriggerBehavior  EventName="Tapped">
+                                    <core:InvokeCommandAction Command="{Binding DataContext.SelecionarConta, ElementName=This}"  CommandParameter="{Binding SelectedItem, ElementName=rdlContas}" />
+                                </core:EventTriggerBehavior>
+                            </interactivity:Interaction.Behaviors>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="11*"/>
+                                <RowDefinition Height="18*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{Binding NomeConta}" Grid.Column="0"  Grid.RowSpan="2" Foreground="{ThemeResource SystemControlHighlightAccentBrush}" Style="{StaticResource SubtitleTextBlockStyle}" />
+                            <Border BorderBrush="{StaticResource TextCorStyle}" BorderThickness="0,0,0,0.5" Margin="0,0,0,-0.333" Grid.RowSpan="2" />
+
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25*"/>
+                                    <RowDefinition Height="28*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="81*"/>
+                                    <ColumnDefinition Width="94*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Uid="MainPageContaValorPrevisto" Text="Valor previsto" Grid.Row="0" Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}"  />
+                                <TextBlock x:Uid="MainPageContaValorRealizado" Text="Valor realizado" Grid.Row="1" Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}"   />
+
+                                <TextBlock Text="{Binding SaldoPrevisto, ConverterParameter=\{0:c2\}, Converter={StaticResource StringFormatConverter}}" Grid.Row="0"  Grid.ColumnSpan="2"  Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Foreground="{Binding SaldoPrevisto, Converter={StaticResource SaldoCorConverter}}" />
+                                <TextBlock Text="{Binding SaldoRealizado, ConverterParameter=\{0:c2\}, Converter={StaticResource StringFormatConverter}}" Grid.Row="1"   Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Foreground="{Binding SaldoRealizado, Converter={StaticResource SaldoCorConverter}}" />
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel x:Name="EmptyStackPanel" Grid.Row="1" Visibility="{Binding ExisteContas, Converter={StaticResource InverterBoolToVisibility}}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="rdlContas">
+                <StackPanel.Transitions>
+                    <TransitionCollection/>
+                </StackPanel.Transitions>
+                <TextBlock x:Uid="MainPageContaEmptyText1" Text="Não existe nada aqui" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource BaseTextBlockStyle}" Margin="0,0,0,10" FontWeight="Bold" >
+                    <TextBlock.Transitions>
+                        <TransitionCollection/>
+                    </TextBlock.Transitions>
+                </TextBlock>
+
+                <TextBlock x:Uid="MainPageContaEmptyText2" Text="Você pode também adicionar novas contas clicando no botão abaixo." HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,10" Style="{StaticResource BaseTextBlockStyle}" TextAlignment="Center"/>
+                <Viewbox Height="58" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+                    <Grid>
+                        <Grid  Width="48" Height="48" Visibility="Visible">
+                            <Path Data="M50.5,4.7500001C25.232973,4.75 4.75,25.232973 4.7500001,50.5 4.75,75.767029 25.232973,96.25 50.5,96.25 75.767029,96.25 96.25,75.767029 96.25,50.5 96.25,25.232973 75.767029,4.75 50.5,4.7500001z M50.5,0C78.390381,0 101,22.609621 101,50.5 101,78.390381 78.390381,101 50.5,101 22.609621,101 0,78.390381 0,50.5 0,22.609621 22.609621,0 50.5,0z" Stretch="Fill" Fill="{ThemeResource SystemControlBackgroundAccentBrush}" Name="Stroke" Visibility="Visible" />
+                        </Grid>
+                        <Path Data="M19.833,0L32.5,0 32.5,19.833999 52.334,19.833999 52.334,32.500999 32.5,32.500999 32.5,52.333 19.833,52.333 19.833,32.500999 0,32.500999 0,19.833999 19.833,19.833999z" Stretch="Uniform" Fill="{ThemeResource SystemControlBackgroundAccentBrush}" Width="26" Height="26" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <TransformGroup.Children>
+                                        <RotateTransform Angle="0" />
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </TransformGroup.Children>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                </Viewbox>
+            </StackPanel>
+        </RelativePanel>
+    </Grid>
+</Page>

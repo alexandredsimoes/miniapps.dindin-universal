@@ -1,0 +1,733 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppBarButtonCreateAccount.Label" xml:space="preserve">
+    <value>criar conta</value>
+  </data>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>DinDin Pro</value>
+  </data>
+  <data name="ButtonCancel.Content" xml:space="preserve">
+    <value>cancelar</value>
+  </data>
+  <data name="ButtonCriarConta.Label" xml:space="preserve">
+    <value>criar conta</value>
+  </data>
+  <data name="ButtonCriarLancamento.Content" xml:space="preserve">
+    <value>criar transação</value>
+  </data>
+  <data name="ButtonCriarLancamento.Label" xml:space="preserve">
+    <value>criar</value>
+  </data>
+  <data name="ButtonSalvarConta.Label" xml:space="preserve">
+    <value>salvar</value>
+  </data>
+  <data name="ConfiguracaoPageButtonAbout.Text" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="ConfiguracaoPageButtonEnviarLogDescricao.Text" xml:space="preserve">
+    <value>Envie o arquivo de log de erros do aplicativo para o desenvolvedor</value>
+  </data>
+  <data name="ConfiguracaoPageButtonEnviarLogTitulo.Text" xml:space="preserve">
+    <value>Enviar log de erros</value>
+  </data>
+  <data name="ConfiguracaoPageButtonFormaPagamentoDescricao.Text" xml:space="preserve">
+    <value>Criar, alterar ou remover suas formas de pagamento.</value>
+  </data>
+  <data name="ConfiguracaoPageButtonFormaPagamentoTitulo.Text" xml:space="preserve">
+    <value>Gerenciar formas de pagamento</value>
+  </data>
+  <data name="ConfiguracaoPageButtonRemoverAdsDescricao.Text" xml:space="preserve">
+    <value>Tenha uma experiência mais completa, removendo os anúncios do aplicativo</value>
+  </data>
+  <data name="ConfiguracaoPageButtonRemoverAdsTitulo.Text" xml:space="preserve">
+    <value>Remover anúncios</value>
+  </data>
+  <data name="ConfiguracaoPageButtonSenhaDescricao.Text" xml:space="preserve">
+    <value>Permite bloquear o acesso através de senha</value>
+  </data>
+  <data name="ConfiguracaoPageButtonSenhaTitulo.Text" xml:space="preserve">
+    <value>Proteger com senha</value>
+  </data>
+  <data name="ConfiguracaoPageButtonTagDescricao.Text" xml:space="preserve">
+    <value>Criar, alterar ou remover suas tags de identificação</value>
+  </data>
+  <data name="ConfiguracaoPageButtonTagTitulo.Text" xml:space="preserve">
+    <value>Gerenciar tags</value>
+  </data>
+  <data name="ConfiguracaoPageCreateBackup.Text" xml:space="preserve">
+    <value>Efetuar backup</value>
+  </data>
+  <data name="ConfiguracaoPageCreateBackupSubtitle.Text" xml:space="preserve">
+    <value>Cria um arquivo de backup e salva no OneDrive</value>
+  </data>
+  <data name="ConfiguracaoPageMsgBackupErro" xml:space="preserve">
+    <value>Não foi possivel efetuar o backup.</value>
+  </data>
+  <data name="ConfiguracaoPageMsgBackupSucesso" xml:space="preserve">
+    <value>Backup efetuado com sucesso.</value>
+  </data>
+  <data name="ConfiguracaoPageMsgEfetuarBackup" xml:space="preserve">
+    <value>Deseja iniciar o backup agora?</value>
+  </data>
+  <data name="ConfiguracaoPageMsgEfetuarBackupMsgProcessando" xml:space="preserve">
+    <value>Efetuando backup...</value>
+  </data>
+  <data name="ConfiguracaoPageMsgEfetuarBackupMsgProcessandoRestauracao" xml:space="preserve">
+    <value>Restaurar backup...</value>
+  </data>
+  <data name="ConfiguracaoPageMsgEfetuarBackupNao" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="ConfiguracaoPageMsgEfetuarBackupSim" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="ConfiguracaoPageMsgRestaurarBackup" xml:space="preserve">
+    <value>Deseja restaurar o backup? Os dados atuais serão apagados.</value>
+  </data>
+  <data name="ConfiguracaoPageMsgRestaurarBackupErro" xml:space="preserve">
+    <value>Não foi possível restaurar o backup.</value>
+  </data>
+  <data name="ConfiguracaoPageMsgRestaurarBackupNao" xml:space="preserve">
+    <value>não</value>
+  </data>
+  <data name="ConfiguracaoPageMsgRestaurarBackupSim" xml:space="preserve">
+    <value>certeza</value>
+  </data>
+  <data name="ConfiguracaoPageMsgRestaurarBackupSucesso" xml:space="preserve">
+    <value>O backup foi restaurado com sucesso.</value>
+  </data>
+  <data name="ConfiguracaoPageRestoreBackup.Text" xml:space="preserve">
+    <value>Restaurar backup</value>
+  </data>
+  <data name="ConfiguracaoPageRestoreBackupSubtitle.Text" xml:space="preserve">
+    <value>Efetua a restauração de um backup previamente efetuado</value>
+  </data>
+  <data name="ConfigurationPageCompraEfetuada" xml:space="preserve">
+    <value>Compra efetuada com sucesso. Reinicie o aplicativo para remover a propaganda.</value>
+  </data>
+  <data name="ConfigurationPageCompraJaEfetuada" xml:space="preserve">
+    <value>Você já possue esse recurso</value>
+  </data>
+  <data name="ConfigurationPageCompraNaoEfetuada" xml:space="preserve">
+    <value>Não foi possível finalizar a compra</value>
+  </data>
+  <data name="ContaComboBox.PlaceholderText" xml:space="preserve">
+    <value>selecione uma conta</value>
+  </data>
+  <data name="ContaDetalheOrderFlyout.Title" xml:space="preserve">
+    <value>Quer ordernar como?</value>
+  </data>
+  <data name="ContaDetalhePageEmptyText1.Text" xml:space="preserve">
+    <value>Não existe nada aqui</value>
+  </data>
+  <data name="ContaDetalhePageEmptyText2.Text" xml:space="preserve">
+    <value>Tente alternar o período, usando a barra de período acima</value>
+  </data>
+  <data name="ContaDetalhePageEmptyText3.Text" xml:space="preserve">
+    <value>Você pode também adicionar novas despesas ou receitas clicando no botão abaixo.</value>
+  </data>
+  <data name="ContaDetalhePageLabelSaldo.Text" xml:space="preserve">
+    <value>Saldo:</value>
+  </data>
+  <data name="ContaDetalhePageLabelSaldoPrevisto.Text" xml:space="preserve">
+    <value>Saldo previsto</value>
+  </data>
+  <data name="ContaDetalhePageMenuItemDuplicar" xml:space="preserve">
+    <value>clonar</value>
+  </data>
+  <data name="ContaDetalhePageMenuItemEditar.Text" xml:space="preserve">
+    <value>alterar</value>
+  </data>
+  <data name="ContaDetalhePageMenuItemRemover.Text" xml:space="preserve">
+    <value>remover</value>
+  </data>
+  <data name="ContaDetalhePageMsgRemoverItem" xml:space="preserve">
+    <value>Você deseja remover este item?</value>
+  </data>
+  <data name="ContaDetalhePageMsgRemoverItemNao" xml:space="preserve">
+    <value>Não!</value>
+  </data>
+  <data name="ContaDetalhePageMsgRemoverItemSim" xml:space="preserve">
+    <value>Sim!</value>
+  </data>
+  <data name="ContaDetalhePageOrdernarButton.Label" xml:space="preserve">
+    <value>ordernar</value>
+  </data>
+  <data name="ContaDetalhePageTipoOrdenacao" xml:space="preserve">
+    <value>maior data,menor data,tags,maior valor,menor valor</value>
+  </data>
+  <data name="ContaFlyout.Title" xml:space="preserve">
+    <value>Onde deseja colocar esse valor?</value>
+  </data>
+  <data name="ContaPageNomeContaEmpty" xml:space="preserve">
+    <value>Insira o nome da conta</value>
+  </data>
+  <data name="ContaPageNomeTextBox.Header" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ContaPageNomeTextBox.PlaceholderText" xml:space="preserve">
+    <value>nome da conta</value>
+  </data>
+  <data name="ContasDetalhePagePivoItemLancamento.Header" xml:space="preserve">
+    <value>transações</value>
+  </data>
+  <data name="ContasDetalhePagePivoItemSumario.Header" xml:space="preserve">
+    <value>resumo</value>
+  </data>
+  <data name="CriaLancamentoPageQuantidadeRepeticaoTextBox.PlaceholderText" xml:space="preserve">
+    <value>Número de repetições</value>
+  </data>
+  <data name="CriaLancamentoPageQuantidadeRepeticaoTextBoxFormat" xml:space="preserve">
+    <value>Número de repetições:</value>
+  </data>
+  <data name="CriarLancamentoPageButtonHoje.Content" xml:space="preserve">
+    <value>Hoje</value>
+  </data>
+  <data name="CriarLancamentoPageButtonInformar.Content" xml:space="preserve">
+    <value>Definir data</value>
+  </data>
+  <data name="CriarLancamentoPageButtonOntem.Content" xml:space="preserve">
+    <value>Ontem</value>
+  </data>
+  <data name="CriarLancamentoPageContaSelecionada" xml:space="preserve">
+    <value>Conta:</value>
+  </data>
+  <data name="CriarLancamentoPageDataFimRepeticao" xml:space="preserve">
+    <value>Data final:</value>
+  </data>
+  <data name="CriarLancamentoPageDataLancamentoDescricao" xml:space="preserve">
+    <value>Selecione a data:</value>
+  </data>
+  <data name="CriarLancamentoPageDataLancamentoDescricaoVazia" xml:space="preserve">
+    <value>Não definido</value>
+  </data>
+  <data name="CriarLancamentoPageErroDataLancamento" xml:space="preserve">
+    <value>Informe a data</value>
+  </data>
+  <data name="CriarLancamentoPageErroFimRepeticaoData" xml:space="preserve">
+    <value>Informe a data final da repetição</value>
+  </data>
+  <data name="CriarLancamentoPageErroFimRepeticaoQuantidade" xml:space="preserve">
+    <value>Informe o número de repetições</value>
+  </data>
+  <data name="CriarLancamentoPageErroSelecionarRepeticaoFim" xml:space="preserve">
+    <value>Selecione o fim da repetição</value>
+  </data>
+  <data name="CriarLancamentoPageErroTags" xml:space="preserve">
+    <value>Selecione ao menos uma tag</value>
+  </data>
+  <data name="CriarLancamentoPageErroValor" xml:space="preserve">
+    <value>Informe o valor previsto</value>
+  </data>
+  <data name="CriarLancamentoPageErroValorRealizado" xml:space="preserve">
+    <value>Informe o valor realizado</value>
+  </data>
+  <data name="CriarLancamentoPageFechado" xml:space="preserve">
+    <value>realizado</value>
+  </data>
+  <data name="CriarLancamentoPageFimRepeticao" xml:space="preserve">
+    <value>Final da repetição:</value>
+  </data>
+  <data name="CriarLancamentoPageFormaPagamentoSelecao" xml:space="preserve">
+    <value>Forma de pagamento:</value>
+  </data>
+  <data name="CriarLancamentoPageFormaPagamentoTextBlock.Text" xml:space="preserve">
+    <value>Forma de pagamento</value>
+  </data>
+  <data name="CriarLancamentoPageFormasPagamento" xml:space="preserve">
+    <value>dinheiro,cartão de crédito,boleto</value>
+  </data>
+  <data name="CriarLancamentoPageLabelData.FormatString" xml:space="preserve">
+    <value>\Data de lança\mento: dd/MM/yyyy</value>
+  </data>
+  <data name="CriarLancamentoPageListaRepeticoes" xml:space="preserve">
+    <value>Nunca repita,Diariamente,Semanalmente,Quinzenalmente,Mensalmente,Anualmente,Durante a semana,Finais de semana</value>
+  </data>
+  <data name="CriarLancamentoPageListaRepeticoesFinal" xml:space="preserve">
+    <value>Nunca,Data específica,Após x repetições</value>
+  </data>
+  <data name="CriarLancamentoPageListaTipos" xml:space="preserve">
+    <value>Receita,Despesa</value>
+  </data>
+  <data name="CriarLancamentoPageMenuPin.Label" xml:space="preserve">
+    <value>fixar</value>
+  </data>
+  <data name="CriarLancamentoPageMenuSave.Label" xml:space="preserve">
+    <value>salvar</value>
+  </data>
+  <data name="CriarLancamentoPageMsgSelectAccount" xml:space="preserve">
+    <value>Você precisa informar a conta</value>
+  </data>
+  <data name="CriarLancamentoPageNaoFechado" xml:space="preserve">
+    <value>não realizado</value>
+  </data>
+  <data name="CriarLancamentoPagePivotItem1.Header" xml:space="preserve">
+    <value>informações principais</value>
+  </data>
+  <data name="CriarLancamentoPagePivotItem2.Header" xml:space="preserve">
+    <value>tags de identificação</value>
+  </data>
+  <data name="CriarLancamentoPagePivotItem3.Header" xml:space="preserve">
+    <value>outras informações</value>
+  </data>
+  <data name="CriarLancamentoPageRepeticaoHeader" xml:space="preserve">
+    <value>Modo de repetição:</value>
+  </data>
+  <data name="CriarLancamentoPageSelecaoVazia" xml:space="preserve">
+    <value>Nenhum</value>
+  </data>
+  <data name="CriarLancamentoPageTagsDespesas" xml:space="preserve">
+    <value>comida,transporte,habitação,saúde,lazer,despesaspessoais,viagens,vestuário,automóvel,educação,casa,seguro,médico,veterinário,compras,esportes,impostos,festa</value>
+  </data>
+  <data name="CriarLancamentoPageTagsReceitas" xml:space="preserve">
+    <value>salários,rendas,outros</value>
+  </data>
+  <data name="CriarLancamentoPageTileTitleDespesa" xml:space="preserve">
+    <value>adicionar despesa</value>
+  </data>
+  <data name="CriarLancamentoPageTileTitleReceita" xml:space="preserve">
+    <value>adicionar receita</value>
+  </data>
+  <data name="CriarLancamentoPageTipo" xml:space="preserve">
+    <value>Tipo:</value>
+  </data>
+  <data name="CriarLancamentoPageTipoLancamento" xml:space="preserve">
+    <value>Tipo:</value>
+  </data>
+  <data name="CriarLancamentoPageValorPrevisto.Text" xml:space="preserve">
+    <value>valor previsto</value>
+  </data>
+  <data name="CriarLancamentoPageValorRealizado.Text" xml:space="preserve">
+    <value>valor realizado</value>
+  </data>
+  <data name="CriarLancamentoRepetirApuracaoText.FormatString" xml:space="preserve">
+    <value>Quanitdade de repetições</value>
+  </data>
+  <data name="CriarLancamentoRepetirApuracaoTextData.FormatString" xml:space="preserve">
+    <value>\Da\ta final: dd/MM/yyyy</value>
+  </data>
+  <data name="DataExtensoHoje" xml:space="preserve">
+    <value>Hoje</value>
+  </data>
+  <data name="DataExtensoOntem" xml:space="preserve">
+    <value>Ontem</value>
+  </data>
+  <data name="DataExtensoPrevisto" xml:space="preserve">
+    <value>Futuro</value>
+  </data>
+  <data name="DataExtensoSaldoAnterior" xml:space="preserve">
+    <value>Saldo anterior</value>
+  </data>
+  <data name="DespesaRadioButton.Content" xml:space="preserve">
+    <value>Despesa</value>
+  </data>
+  <data name="DetalhesContaPageLabelData.Text" xml:space="preserve">
+    <value>Data de lançamento</value>
+  </data>
+  <data name="DetalhesContaPageLabelDescricao.Text" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="DetalhesContaPageLabelFinalRepeticao.Text" xml:space="preserve">
+    <value>Final da repetição</value>
+  </data>
+  <data name="DetalhesContaPageLabelMetodoPagamento.Text" xml:space="preserve">
+    <value>Forma de pagamento</value>
+  </data>
+  <data name="DetalhesContaPageLabelRepeticao.Text" xml:space="preserve">
+    <value>Repetição</value>
+  </data>
+  <data name="DetalhesContaPageLabelStatus.Text" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="DetalhesContaPageLabelTags.Text" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="DetalhesContaPageLabelValor.Text" xml:space="preserve">
+    <value>Valor previsto</value>
+  </data>
+  <data name="DetalhesContaPageLabelValorRealizado.Text" xml:space="preserve">
+    <value>Valor realizado</value>
+  </data>
+  <data name="FechadoToggle.OffContent" xml:space="preserve">
+    <value>não realizado</value>
+  </data>
+  <data name="FechadoToggle.OnContent" xml:space="preserve">
+    <value>realizado</value>
+  </data>
+  <data name="FormaPagamentoFlyout.Title" xml:space="preserve">
+    <value>Como você irá pagar ou receber por isso?</value>
+  </data>
+  <data name="FormaPagamentoPageAppBarButtonCriar.Label" xml:space="preserve">
+    <value>salvar</value>
+  </data>
+  <data name="FormaPagamentoPageAppBarButtonCriarFormaPagamento.Label" xml:space="preserve">
+    <value>criar</value>
+  </data>
+  <data name="FormaPagamentoPageAppBarButtonCriarTag.Label" xml:space="preserve">
+    <value>criar</value>
+  </data>
+  <data name="FormaPagamentoPageAppBarButtonRemove.Label" xml:space="preserve">
+    <value>remover</value>
+  </data>
+  <data name="FormaPagamentoPageFlyoutMsgErroNome" xml:space="preserve">
+    <value>Informe o nome da forma de pagamento</value>
+  </data>
+  <data name="FormaPagamentoPageFlyoutNome.PlaceholderText" xml:space="preserve">
+    <value>Nome da forma de pagamento</value>
+  </data>
+  <data name="FormaPagamentoPageMenuItemRemover.Text" xml:space="preserve">
+    <value>remover</value>
+  </data>
+  <data name="FormaPagamentoPageMsgExisteRelacionamento" xml:space="preserve">
+    <value>Essa forma de pagamento está sendo utilizada, e por isso não pode ser removida</value>
+  </data>
+  <data name="FormaPagamentoPageTituloPagina.Text" xml:space="preserve">
+    <value>GERENCIAR FORMAS DE PAGAMENTO</value>
+  </data>
+  <data name="FormatoData" xml:space="preserve">
+    <value>dd/MM/yyyy</value>
+  </data>
+  <data name="LancamentoDetalhePageDuplicarButton.Label" xml:space="preserve">
+    <value>duplicar</value>
+  </data>
+  <data name="LancamentoDetalhePageEditarButton.Label" xml:space="preserve">
+    <value>alterar</value>
+  </data>
+  <data name="LancamentoDetalhePageRemoverButton.Label" xml:space="preserve">
+    <value>remover</value>
+  </data>
+  <data name="LoginPageTituloPagina" xml:space="preserve">
+    <value>BEM VINDO</value>
+  </data>
+  <data name="MainPageBalancoAtual.Text" xml:space="preserve">
+    <value>Saldo atual</value>
+  </data>
+  <data name="MainPageCompartilharButton.Label" xml:space="preserve">
+    <value>compartilhar</value>
+  </data>
+  <data name="MainPageConfiguracaoButton.Label" xml:space="preserve">
+    <value>configuração</value>
+  </data>
+  <data name="MainPageContaEmptyText1.Text" xml:space="preserve">
+    <value>Não existe nada aqui!</value>
+  </data>
+  <data name="MainPageContaEmptyText2.Text" xml:space="preserve">
+    <value>Você pode também adicionar novas contas clicando no botão abaixo.</value>
+  </data>
+  <data name="MainPageContaValorPrevisto.Text" xml:space="preserve">
+    <value>Valor previsto</value>
+  </data>
+  <data name="MainPageContaValorRealizado.Text" xml:space="preserve">
+    <value>Valor realizado</value>
+  </data>
+  <data name="MainPageDespesasFuturasTitulo.Text" xml:space="preserve">
+    <value>Despesas futuras</value>
+  </data>
+  <data name="MainPageDespesasPendentes.Text" xml:space="preserve">
+    <value>Despesas futuras</value>
+  </data>
+  <data name="MainPageFutureExpenses" xml:space="preserve">
+    <value>Próximos meses</value>
+  </data>
+  <data name="MainPageHeaderConta.Text" xml:space="preserve">
+    <value>Contas</value>
+  </data>
+  <data name="MainPageHeaderHome.Text" xml:space="preserve">
+    <value>Início</value>
+  </data>
+  <data name="MainPageHeaderRelatorio.Text" xml:space="preserve">
+    <value>Relatórios</value>
+  </data>
+  <data name="MainPageMsgNoAccount" xml:space="preserve">
+    <value>Você precisa criar ao menos uma conta para adicionar despesa/receita</value>
+  </data>
+  <data name="MainPageRemoverContaButtonNao" xml:space="preserve">
+    <value>Cara, cancele isso</value>
+  </data>
+  <data name="MainPageRemoverContaButtonSim" xml:space="preserve">
+    <value>Isso ai, manda ver</value>
+  </data>
+  <data name="MainPageRemoverContaMsg" xml:space="preserve">
+    <value>Deseja remover essa conta? Todos os lançamentos relacionados serão removidos também.</value>
+  </data>
+  <data name="MainPageShareDescription" xml:space="preserve">
+    <value>Dá uma olhada nesse aplicativo que estou descobri</value>
+  </data>
+  <data name="MainPageShareTitle" xml:space="preserve">
+    <value>Controle seus gastos</value>
+  </data>
+  <data name="MainPageViewModelMsgEmailLog" xml:space="preserve">
+    <value>Deseja enviar seu arquivo de log de erros para o desenvolvedor do aplicativo? Nenhuma informação pessoal é enviada.</value>
+  </data>
+  <data name="MainPageViewModelNotLogMessage" xml:space="preserve">
+    <value>Nenhum arquivo de log encontrado</value>
+  </data>
+  <data name="MainPageViewModelSendLogBodyMessage" xml:space="preserve">
+    <value>Estou enviando meu arquivo de log</value>
+  </data>
+  <data name="MainPageViewModelSendLogSubject" xml:space="preserve">
+    <value>DinDin Universal - Arquivo de log de erros</value>
+  </data>
+  <data name="MenuItemFlyoutRemoverLancamento.Text" xml:space="preserve">
+    <value>remover</value>
+  </data>
+  <data name="MinhasContasPivoItem.Header" xml:space="preserve">
+    <value>minhas contas</value>
+  </data>
+  <data name="MsgConfirmaAlteracaoSenha" xml:space="preserve">
+    <value>O PIN foi definido com sucesso!</value>
+  </data>
+  <data name="MsgOneDriveNotLogon" xml:space="preserve">
+    <value>Você precisa logar e permtir o acesso a sua conta do OneDrive.</value>
+  </data>
+  <data name="MsgParcela" xml:space="preserve">
+    <value>Parcela {0}</value>
+  </data>
+  <data name="MsgPerguntaAvaliacao" xml:space="preserve">
+    <value>Gostando do aplicativo? Então, diz pra gente o que você achou. Deseja avaliar agora?</value>
+  </data>
+  <data name="MsgPerguntaFeedback" xml:space="preserve">
+    <value>Tudo bem, então gostaria de enviar um feedback por e-mail?</value>
+  </data>
+  <data name="MsgSenhaIncorreta" xml:space="preserve">
+    <value>PIN inválido, tente novamente.</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="Ontem" xml:space="preserve">
+    <value>Ontem</value>
+  </data>
+  <data name="PinUserControlTitle.Text" xml:space="preserve">
+    <value>Informe seu PIN</value>
+  </data>
+  <data name="Previsto" xml:space="preserve">
+    <value>Previsto</value>
+  </data>
+  <data name="QuantidadeRepeticoesSlider.Header" xml:space="preserve">
+    <value>Número de repetições:</value>
+  </data>
+  <data name="RateAppButton.Content" xml:space="preserve">
+    <value>Gostou do aplicativo? Avalie ;)</value>
+  </data>
+  <data name="ReceitaRadioButton.Content" xml:space="preserve">
+    <value>Receita</value>
+  </data>
+  <data name="RepeticaoFinalFlyout.SelectedValue" xml:space="preserve">
+    <value>Final da repetição</value>
+  </data>
+  <data name="RepeticaoFinalFlyout2.Title" xml:space="preserve">
+    <value>Até quando?</value>
+  </data>
+  <data name="RepeticaoFlyout.Title" xml:space="preserve">
+    <value>Você gostaria que esse lançamento seja repetido?</value>
+  </data>
+  <data name="SaldoInicialTag" xml:space="preserve">
+    <value>saldo inicial</value>
+  </data>
+  <data name="SalvarButton.Label" xml:space="preserve">
+    <value>salvar</value>
+  </data>
+  <data name="ShellMenuAbout" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="ShellMenuAccounts" xml:space="preserve">
+    <value>Contas</value>
+  </data>
+  <data name="ShellMenuConfigurations" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="ShellMenuHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="SobreEmail" xml:space="preserve">
+    <value>alexandre.dias.simoes@outlook.com</value>
+  </data>
+  <data name="SobreEmailAssunto" xml:space="preserve">
+    <value>DinDin Universal - Contato</value>
+  </data>
+  <data name="SobreEmailBody" xml:space="preserve">
+    <value>Olá caro desenvolvedor,
+</value>
+  </data>
+  <data name="SobreFaleDevButton.Content" xml:space="preserve">
+    <value>Fale com o desenvolvedor</value>
+  </data>
+  <data name="SumarioPivoItem.Header" xml:space="preserve">
+    <value>resumo</value>
+  </data>
+  <data name="TagPageFlyoutDespesa.Content" xml:space="preserve">
+    <value>Despesa</value>
+  </data>
+  <data name="TagPageFlyoutMsgErroNome" xml:space="preserve">
+    <value>Informe o nome da tag</value>
+  </data>
+  <data name="TagPageFlyoutMsgTipo" xml:space="preserve">
+    <value>Informe Receita ou Despesa</value>
+  </data>
+  <data name="TagPageFlyoutNome.PlaceholderText" xml:space="preserve">
+    <value>Nome da tag</value>
+  </data>
+  <data name="TagPageFlyoutReceita.Content" xml:space="preserve">
+    <value>Receita</value>
+  </data>
+  <data name="TagPageFlyoutTitulo.Text" xml:space="preserve">
+    <value>Gerenciar tag</value>
+  </data>
+  <data name="TagsPageAppBarButtonCriarTag.Label" xml:space="preserve">
+    <value>criar</value>
+  </data>
+  <data name="TagsPageAppBarButtonSalvarTag.Label" xml:space="preserve">
+    <value>salvar</value>
+  </data>
+  <data name="TagsPageMsgExisteRelacionamento" xml:space="preserve">
+    <value>Essa tag está sendo utilizada, e por isso não pode ser removida</value>
+  </data>
+  <data name="TagsPagePageMenuItemRemover.Text" xml:space="preserve">
+    <value>remover</value>
+  </data>
+  <data name="TagsPageTituloPagina.Text" xml:space="preserve">
+    <value>GERENCIAR TAGS</value>
+  </data>
+  <data name="TextoAtivado" xml:space="preserve">
+    <value>Ativado</value>
+  </data>
+  <data name="TipoFlyout.Title" xml:space="preserve">
+    <value>Qual é o tipo de entrada está fazendo?</value>
+  </data>
+  <data name="ToastDespesaNaoPagaDescricao" xml:space="preserve">
+    <value>Despesa(s) vencida(s) no total de {valor} não realizada. Deseja efetivar?</value>
+  </data>
+  <data name="TxtLancamentoDescricao.PlaceholderText" xml:space="preserve">
+    <value>Informe uma descrição resumida</value>
+  </data>
+  <data name="TxtLancamentoNumeroDocumento.PlaceholderText" xml:space="preserve">
+    <value>Número do documento</value>
+  </data>
+  <data name="TxtTagsSelecionadas.PlaceholderText" xml:space="preserve">
+    <value>Selecione uma das tags abaixo ou digita aqui para criar novas tags</value>
+  </data>
+  <data name="VersaoTextBlock.Text" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+</root>
