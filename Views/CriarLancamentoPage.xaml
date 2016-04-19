@@ -263,25 +263,27 @@
                 <!--Forma de pagamento-->
                 <ComboBox  x:Name="FormaPagamentoFlyout" PlaceholderText="{Binding FormaDePagamento.Descricao, Converter={StaticResource SelecaoConverter}, ConverterParameter='CriarLancamentoPageFormaPagamentoSelecao'}"
                            ItemsSource="{Binding FormasDePagamento}" 
-                           SelectedValue="{Binding FormaDePagamento, Mode=TwoWay}" BorderThickness="0"
+                           SelectedValue="{Binding FormaDePagamento, Mode=TwoWay}"  BorderThickness="0,0,0,0.5"
                            HorizontalAlignment="Stretch" Margin="0,0,0,5" Padding="0,5,0,7" ItemTemplateSelector="{StaticResource SelecaoFormaDataTemplateSelector}" />
 
                 <!--Repetição-->
                 <ComboBox x:Name="RepeticaoButton" PlaceholderText="{Binding ElementName=RepeticaoFlyout, Path=SelectedValue.Descricao, Converter={StaticResource SelecaoConverter},ConverterParameter='CriarLancamentoPageRepeticaoHeader'}"
                           ItemsSource="{Binding ListaRepeticoes}" 
                           SelectedValue="{Binding Repeticao,Mode=TwoWay}" HorizontalAlignment="Stretch" 
-                          BorderThickness="0" Margin="0,0,0,5" Padding="0,5,0,7" ItemTemplateSelector="{StaticResource SelecaoRepeticaoDataTemplateSelector}"/>
+                           BorderThickness="0,0,0,0.5" Margin="0,0,0,5" Padding="0,5,0,7" ItemTemplateSelector="{StaticResource SelecaoRepeticaoDataTemplateSelector}"/>
 
 
                 <!--Final da retição-->
                 <ComboBox x:Name="FinalRepeticaoButton" PlaceholderText="{Binding ElementName=RepeticaoFinalFlyout, Path=SelectedValue.Descricao, Converter={StaticResource SelecaoConverter},ConverterParameter='CriarLancamentoPageFimRepeticao'}"
                           ItemsSource="{Binding ListaRepeticoesFim}" SelectedValue="{Binding RepeticaoFim,Mode=TwoWay}" HorizontalAlignment="Stretch"
                           Visibility="{Binding Repeticao.Indice, Converter={StaticResource RepeticaoVisibilityConverter}}" 
-                          BorderBrush="{StaticResource FundoStyle2}" BorderThickness="0" Margin="0,0,0,5" Padding="0,5,0,7"
+                          BorderBrush="{StaticResource FundoStyle2}"  BorderThickness="0,0,0,0.5" Margin="0,0,0,5" Padding="0,5,0,7"
                           ItemTemplateSelector="{StaticResource SelecaoFinalRepeticaoDataTemplateSelector}"/>
 
                 <!--Data fim da repetição -->
-                <DatePicker Date="{Binding Detalhes.FimRepeticaoData, Mode=TwoWay, Converter={StaticResource DateTimeParaDateTimeOffsetConverter}}" x:Name="DataFimRepeticaoFlyout" HorizontalAlignment="Left" Margin="0,0,0,5" Visibility="{Binding RepeticaoFim.Indice, ConverterParameter=1, Converter={StaticResource RepeticaoApuracaoVisibility}}" />
+                <DatePicker Date="{Binding Detalhes.FimRepeticaoData, Mode=TwoWay, Converter={StaticResource DateTimeParaDateTimeOffsetConverter}}" 
+                            x:Name="DataFimRepeticaoFlyout" HorizontalAlignment="Left" Margin="0,0,0,5"  BorderThickness="0,0,0,0.5"
+                            Visibility="{Binding RepeticaoFim.Indice, ConverterParameter=1, Converter={StaticResource RepeticaoApuracaoVisibility}}" />
                 
                 <!--Repetir apuração Quantidade-->
                 <TextBox x:Name="txtQuantidadeRepeticao" PlaceholderText="Quantidade de repetições" InputScope="NumericPin" x:Uid="CriaLancamentoPageQuantidadeRepeticaoTextBox"
